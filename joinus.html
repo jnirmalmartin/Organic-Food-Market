@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Join Us - Organic Market</title>
+<style>
+    body {
+        font-family: cursive;
+        margin: 0;
+        padding: 0;
+        background: #618a3d;
+    }
+
+    .container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        box-shadow: 1px 1px 15px black;
+    }
+
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+
+    p {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    form {
+        text-align: center;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="file"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+
+    .popup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #ffffff;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        z-index: 9999;
+        display: none;
+    }
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 9998;
+        display: none;
+    }
+
+    .close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Join Us📢</h1>
+    <p>Join our team to contribute to our mission of providing organic products.</p>
+    <p> Upload your resume!!📄</p>
+    <form id="joinForm" action="#" method="post">
+        <input type="text" id="name" name="name" placeholder="Your Name" required><br>
+        <input type="email" id="email" name="email" placeholder="Your Email Address" required><br>
+        <input type="file" id="resume" name="resume" required><br>
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+<div class="overlay" id="overlay"></div>
+<div class="popup" id="popup">
+    <span class="close" onclick="closePopup()">&times;</span>
+    <p>Thank you for your submission! Our team will review your resume and contact you soon.</p>
+</div>
+
+<script>
+    const form = document.getElementById('joinForm');
+    form.addEventListener('submit', function(event) {
+        event.preventDefault(); 
+        showPopup(); 
+    });
+
+
+    function showPopup() {
+        const overlay = document.getElementById('overlay');
+        const popup = document.getElementById('popup');
+        overlay.style.display = 'block';
+        popup.style.display = 'block';
+    }
+
+
+    function closePopup() {
+        const overlay = document.getElementById('overlay');
+        const popup = document.getElementById('popup');
+        overlay.style.display = 'none';
+        popup.style.display = 'none';
+        form.reset();
+    }
+</script>
+
+</body>
+</html>

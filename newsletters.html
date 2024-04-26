@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organic Market Newsletter Subscription</title>
+    <style>
+        body {
+            font-family: cursive;
+            margin: 0;
+            padding: 0;
+            background: #618a3d;
+
+        }
+
+        .container {
+            margin-top: 100px;
+            max-width: 600px;
+            height: 400px;
+            text-align: center;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            box-shadow: 1px 1px 15px black;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        /* Popup box style */
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #ffffff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 9999;
+            display: none;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9998;
+            display: none;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Subscribe to Our Newsletter 📢</h1>
+        <p>Get updates on the latest organic products, special offers, and more!</p>
+
+        <form id="subscribeForm" action="#" method="post">
+            <input type="email" id="email" name="email" style="text-align: center;"
+                placeholder="Enter your email address to receive the newsletter" required>
+            <label style="width: 100%;">
+                <input type="checkbox" checked="checked" name="subscribe" > Daily newsletter
+            </label>
+            <input type="submit" value="Subscribe" style="margin-top: 10px; margin-left: 10px;">
+        </form>
+
+
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+    <div class="popup" id="popup">
+        <span class="close" onclick="closePopup()">&times;</span>
+        <p>Successfully subscribed!</p>
+    </div>
+
+    <script>
+        // Get the form and subscribe button
+        const form = document.getElementById('subscribeForm');
+        const subscribeButton = document.querySelector('input[type="submit"]');
+
+        // Add event listener to the form
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+            showPopup();
+        });
+
+        function showPopup() {
+            const overlay = document.getElementById('overlay');
+            const popup = document.getElementById('popup');
+            overlay.style.display = 'block';
+            popup.style.display = 'block';
+            setTimeout(function () {
+                overlay.style.display = 'none';
+                popup.style.display = 'none';
+                form.reset();
+            }, 3000);
+        }
+
+        function closePopup() {
+            const overlay = document.getElementById('overlay');
+            const popup = document.getElementById('popup');
+            overlay.style.display = 'none';
+            popup.style.display = 'none';
+            form.reset();
+        }
+    </script>
+
+</body>
+
+</html>
